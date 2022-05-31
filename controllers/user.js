@@ -1,4 +1,5 @@
 const bcjs = require('bcryptjs');
+const { request, response } = require('express');
 
 const Usuario = require('../models/usuario');
 
@@ -64,12 +65,11 @@ const usuariosDelete = async(req = request, res = response) => {
     //Fisicamente lo borramos
     // const usuario = await Usuario.findByIdAndDelete(id);
 
-
     const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
 
     res.json({
         ok: true,
-        usuario
+        usuario,
     });
 }
 
